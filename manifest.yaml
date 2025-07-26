@@ -10,7 +10,7 @@ metadata:
     zh_CN: 自动将当前时间和自上次聊天以来经过的时间添加到提示词中。
   label:
     en_US: PromptTimer
-    zh_CN: Hello
+    zh_CN: PromptTimer
 execution:
   python:
     path: PromptTimer.py
