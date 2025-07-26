@@ -34,7 +34,7 @@ class PromptTimer(BasePlugin):
         if session_id in self.last_messages_time:
             additional_prompt += f", 距离上次对话已经过去了{time.time() - self.last_messages_time.get(session_id)}秒"
 
-        print(ctx.event.default_prompt)
+        print(type(ctx.event.default_prompt[0]).__qualname__)
 
     # 插件卸载时触发
     def __del__(self):
