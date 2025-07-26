@@ -4,7 +4,7 @@ metadata:
   author: huangdihd
   name: PromptTimer
   repository: 'https://github.com/huangdihd/PromptTimer'
-  version: 0.1.0
+  version: 1.0.0
   description:
     en_US: Automatically adds current time and elapsed time since last chat to your prompts.
     zh_CN: 自动将当前时间和自上次聊天以来经过的时间添加到提示词中。

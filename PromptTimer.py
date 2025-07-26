@@ -8,7 +8,7 @@ from pkg.plugin.context import register, handler, BasePlugin, APIHost, EventCont
 from pkg.provider.entities import Message
 from pkg.plugin.events import *
 
-@register(name="PromptTimer", description="Automatically adds current time and elapsed time since last chat to your prompts.", version="0.1", author="huangdihd")
+@register(name="PromptTimer", description="Automatically adds current time and elapsed time since last chat to your prompts.", version="1.0.0", author="huangdihd")
 class PromptTimer(BasePlugin):
 
     def __init__(self, host: APIHost):
