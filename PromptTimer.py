@@ -14,7 +14,7 @@ class PromptTimer(BasePlugin):
     def __init__(self, host: APIHost):
         if not os.path.isdir('data/PromptTimer'):
             os.mkdir('data/PromptTimer')
-        if not os.path.isfile('data/PromptTimer/last_messages_times.yml'):
+        if not os.path.isfile('data/PromptTimer/last_messages_time.yml'):
             with open('data/PromptTimer/last_messages_time.yml', 'w'):
                 pass
 
