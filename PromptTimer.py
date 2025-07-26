@@ -39,7 +39,8 @@ class PromptTimer(BasePlugin):
 
     @handler(NormalMessageResponded)
     async def handle_response(self, ctx: EventContext):
-        print(ctx.event.query.get_variable('session_id'))
+        session_id = ctx.event.query.get_variable('session_id')
+        self.last_messages_time[session_id] = time.time()
 
     def __del__(self):
         with open('data/PromptTimer/last_messages_time.yml', 'w') as f:
