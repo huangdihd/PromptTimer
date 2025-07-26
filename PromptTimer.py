@@ -47,7 +47,6 @@ class PromptTimer(BasePlugin):
         session_id = ctx.event.query.get_variable('session_id')
         self.last_messages_time[session_id] = time.time()
         self.save()
-        print(self.last_messages_time)
 
     def __del__(self):
         self.save()
