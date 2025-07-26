@@ -37,9 +37,10 @@ class PromptTimer(BasePlugin):
 
         ctx.event.default_prompt.append(Message(role='system', content=additional_prompt))
 
-        print(ctx.event.default_prompt)
+    @handler(NormalMessageResponded)
+    async def handle_response(self, ctx: EventContext):
+        print(ctx.event.query.get_variable('session_id'))
 
-    # 插件卸载时触发
     def __del__(self):
         with open('data/PromptTimer/last_messages_time.yml', 'w') as f:
             yaml.dump(self.last_messages_time, f)
