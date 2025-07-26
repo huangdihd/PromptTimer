@@ -26,6 +26,11 @@ class PromptTimer(BasePlugin):
 
         super().__init__(host)
 
+    def save(self):
+        with open('data/PromptTimer/last_messages_time.yml', 'w') as f:
+            yaml.dump(self.last_messages_time, f)
+
+
     @handler(PromptPreProcessing)
     async def prompt_preprocessor(self, ctx: EventContext):
         now = datetime.datetime.now(datetime.timezone.utc).astimezone()
@@ -41,7 +46,7 @@ class PromptTimer(BasePlugin):
     async def handle_response(self, ctx: EventContext):
         session_id = ctx.event.query.get_variable('session_id')
         self.last_messages_time[session_id] = time.time()
+        self.save()
 
     def __del__(self):
-        with open('data/PromptTimer/last_messages_time.yml', 'w') as f:
-            yaml.dump(self.last_messages_time, f)
+        self.save()
