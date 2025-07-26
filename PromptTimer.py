@@ -26,6 +26,7 @@ class PromptTimer(BasePlugin):
 
         super().__init__(host)
 
+
     def save(self):
         with open('data/PromptTimer/last_messages_time.yml', 'w') as f:
             yaml.dump(self.last_messages_time, f)
@@ -37,10 +38,14 @@ class PromptTimer(BasePlugin):
         additional_prompt = str(now.strftime('现在的时间是:%c, 时区为%Z'))
         session_id = ctx.event.query.get_variable('session_id')
 
+        if not ctx.event.prompt:
+            self.last_messages_time.pop(session_id, None)
+
         if session_id in self.last_messages_time:
             additional_prompt += f", 距离上次对话已经过去了{time.time() - self.last_messages_time.get(session_id)}秒"
 
         ctx.event.default_prompt.append(Message(role='system', content=additional_prompt))
+
 
     @handler(NormalMessageResponded)
     async def handle_response(self, ctx: EventContext):
